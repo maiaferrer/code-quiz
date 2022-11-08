@@ -1,105 +1,98 @@
-
-// Call on HTML elements
-  var quizContainer = document.getElementById("quiz");
-  var resultsContainer = document.getElementById("results");
-  var submitButton = document.getElementById("submit");
-  var myQuestions = [
-    {
-      question: "What is 10/2?",
-      answers: {
-        a: "3",
-        b: "5",
-        c: "115",
-      },
-      correctAnswer: "b",
-    },
-    {
-      question: "What is 30/3?",
-      answers: {
-        a: "3",
-        b: "5",
-        c: "10",
-      },
-      correctAnswer: "c",
-    },
-  ];
-
-// create a function that 1. creates questions and 2. shows the results
-function generateQuiz(
-  myQuestions,
-  quizContainer,
-  resultsContainer,
-  submitButton
-) {
-  function showQuestions(myQuestions, quizContainer) {
-    var output = [];
-    var answers;
-
-    for (var i = 0; i < myQuestions.length; i++) {
-      answers = [];
-
-      for (letter in myQuestions[i].answers) {
-        answers.push(
-          "<label>" +
-            '<input type="radio" name="question' +
-            i +
-            '" value="' +
-            letter +
-            '">' +
-            letter +
-            ": " +
-            myQuestions[i].answers[letter] +
-            "</label>"
-        );
-      }
-
-      output.push(
-        '<div class="question">' +
-          myQuestions[i].question +
-          "</div>" +
-          '<div class="answers">' +
-          answers.join("") +
-          "</div>"
-      );
-    }
-
-    quizContainer.innerHTML = output.join("");
+// Variables under here
+var startBtn = document.getElementById('start-btn')
+var nextBtn = document.getElementById('next-btn')
+var questionContainerElement = document.getElementById('question-container')
+var questions = [
+  {
+    question:"this would be a question?",
+    answers: [
+      {text: "this is correct", correct: true},
+      {text: "this is wrong", correct: false}
+    ]
   }
+]
+let shuffledQuestions, currentQuestionIndex
 
-  showQuestions(myQuestions, quizContainer);
+var questionElement = document.getElementById('question')
+var answerBtnsElement = document.getElementById('answer-buttons')
+
+
+startBtn.addEventListener('click',startGame)
+nextBtn.addEventListener('click', () => {
+  currentQuestionIndex++
+  setNextQuestion()
+})
+
+// create start game function
+function startGame() {
+  startBtn.classList.add('hide')
+  shuffledQuestions = questions.sort(() => Math.random() - .5) 
+  currentQuestionIndex = 0
+  questionContainerElement.classList.remove('hide')
+  setNextQuestion()
 }
 
-  function showResults(myQuestions, quizContainer, resultsContainer) {
-    var answerContainers = quizContainer.querySelectorAll(".answers");
-
-    var userAnswer = "";
-    var numCorrect = 0;
-
-    for (var i = 0; i < myQuestions.length; i++) {
-      userAnswer = (
-        answerContainers[i].querySelector(
-          "input[name=question" + i + "]:checked"
-        ) || {}
-      ).value;
-      if (userAnswer === myQuestions[i].correctAnswer) {
-        numCorrect++;
-        answerContainers[i].style.color = "lightgreen";
-      } else {
-        answerContainers[i].style.color = "red";
-      }
-    }
-    resultsContainer.innerHTML = numCorrect + " out of " + myQuestions.length;
-  }
-
-
-generateQuiz(myQuestions, quizContainer, resultsContainer, submitButton);
-
-// when user clicks submit, show results
-  submitButton.onclick = function () {
-    showResults(myQuestions, quizContainer, resultsContainer);
-  };
-
-// create a begin Quiz function
-function beginQuiz() {
-  
+// create function for next question
+function setNextQuestion() {
+  resetState ()
+  showQuestion(shuffledQuestions[currentQuestionIndex])
 }
+
+function showQuestion(question){
+  questionElement.innerText = question.question
+  question.answers.forEach(answer => {
+    var button = document.createElement('button')
+    button.innerText = answer.text 
+    button.classList.add('btn')
+    if (answer.correct) {
+      button.dataset.correct = answer.correct
+    }
+    button.addEventListener('click', selectAnswer)
+    answerBtnsElement.appendChild(button)
+  });
+}
+function resetState() {
+  nextBtn.classList.add('hide')
+  while (answerBtnsElement.firstchild) {
+    answerBtnsElement.removeChild
+    (answerBtnsElement.firstChild)
+  }
+}
+
+// Function for what happens after anser is selected
+function selectAnswer(e) {
+  var selectedBtn = e.target
+  var correct = selectedBtn.dataset.correct
+  setStatusClass(document.body, correct)
+  Array.from(answerBtnsElement.children). forEach(button => {
+    setStatusClass(button, button.dataset.correct)
+  })
+  if(shuffledQuestions.length > currentQuestionIndex + 1) {
+    nextBtn.classList.remove('hide')
+  } else {
+    startBtn.innerText = 'restart'
+  }
+  nextBtn.classList.remove('hide')
+}
+
+function setStatusClass(element, correct) {
+  clearStatusClass(element)
+  if(correct) {
+  element.classList.add('correct') 
+  } else {
+    element.classList.add('wrong')
+  }
+}
+
+function clearStatusClass(element) {
+  element.classList.remove('correct')
+  element.classList.remove('wrong')
+}
+
+// Add Timer
+
+
+// Add the ability to save a score
+
+
+// Scoreboard 

@@ -1,1 +1,83 @@
 /* apply styling here */
+*, *::before, *::after {
+    box-sizing: border-box;
+    font-family: 'Courier New', Courier, monospace
+}
+
+:root {
+    --neutral-background: #FAF3E0;
+    --wrong-background: #FA4659;
+    --correct-background: #2EB872 ;
+    --container-color: #B68973;
+}
+
+body {
+    background-color: var(--neutral-background)    ;
+    padding: 0;
+    margin:0;
+    display: flex;
+    width: 100vw;
+    height:100vh;
+    justify-content: center;
+    align-items:center;
+}
+
+body.correct {
+    background-color: var(--correct-background);
+}
+
+body.wrong {
+    background-color: var(--wrong-background);
+}
+
+.container {
+    width: 800px;
+    max-width: 80%;
+    background-color: var(--container-color) ;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 0 10px 2px;
+}
+
+.btn-grid {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.btn {
+    background-color: var(--neutral-background);
+    border-radius: 5px;
+    padding: 5px 10px;
+    color: #1E212D;
+    outline: none;
+}
+
+.btn:hover {
+    background-color: #EABF9F ;
+}
+
+.btn.correct {
+    background-color: var(--correct-background);
+}
+
+.btn.wrong {
+    background-color: var(--wrong-background);
+}
+
+.start-btn, .next-btn {
+    font-size: 1.5 rem;
+    font-weight: bold;
+    padding: 10px 20px;
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hide {
+    display: none;
+}
