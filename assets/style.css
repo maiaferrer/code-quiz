@@ -1,14 +1,19 @@
 /* apply styling here */
 *, *::before, *::after {
     box-sizing: border-box;
-    font-family: 'Courier New', Courier, monospace
+    font-family: 'Trebuchet MS', sans-serif;
+    font-weight: 100;
 }
 
 :root {
     --neutral-background: #FAF3E0;
     --wrong-background: #FA4659;
     --correct-background: #2EB872 ;
-    --container-color: #B68973;
+    --container-color: #B7C4CF;
+}
+#question {
+    font-weight: bolder;
+    text-align: center;
 }
 
 body {
@@ -55,7 +60,7 @@ body.wrong {
 }
 
 .btn:hover {
-    background-color: #EABF9F ;
+    background-color: #EFF5F5;
 }
 
 .btn.correct {
@@ -81,3 +86,4 @@ body.wrong {
 .hide {
     display: none;
 }
+

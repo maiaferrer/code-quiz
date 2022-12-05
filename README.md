@@ -25,7 +25,7 @@ THEN I can save my initials and my score
 ## Important Links
 
 [GitHub Repository](https://github.com/maiaferrer/code-quiz)
-[Deployed Application]()
+[Deployed Application](https://maiaferrer.github.io/code-quiz/)
 
 ## Languages used
 

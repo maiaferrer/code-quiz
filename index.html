@@ -11,6 +11,8 @@
   </head>
   <body>
     <div class="container">
+      <h1>Time: <span id="time">00</span></h1>
+      <h1>View HighScore <span id="high score"></span></h1>
         <div id="question-container" class="hide">
             <div id="question">Question</div>
             <div id="answer-buttons" class="btn-grid">
@@ -19,6 +21,18 @@
                 <button class="btn">Answer 3</button>
                 <button class="btn">Answer 4</button>
             </div>
+        </div>
+        <div class="hide" id="gameover-box">
+            <h1>All Done!</h1>
+            <div id="a">
+            <label>Enter Initials: </label><input type="text" id="initial">
+            <button id="initial-submit">Submit</button>
+            </div>
+
+            <div id="b">
+              <ul id="initial-list"></ul>
+            </div>
+
         </div>
         <div class="controls">
             <button id="start-btn" class="start-btn btn">Begin Quiz</button>
