@@ -10,34 +10,43 @@
     <title>Code Quiz</title>
   </head>
   <body>
+    <header>
+      <h1 id="time">Time: <span>00</span></h1>
+    </header>
     <div class="container">
-      <h1>Time: <span id="time">00</span></h1>
-      <h1>View HighScore <span id="high score"></span></h1>
-        <div id="question-container" class="hide">
-            <div id="question">Question</div>
-            <div id="answer-buttons" class="btn-grid">
-                <button class="btn">Answer 1</button>
-                <button class="btn">Answer 2</button>
-                <button class="btn">Answer 3</button>
-                <button class="btn">Answer 4</button>
-            </div>
-        </div>
-        <div class="hide" id="gameover-box">
-            <h1>All Done!</h1>
-            <div id="a">
-            <label>Enter Initials: </label><input type="text" id="initial">
-            <button id="initial-submit">Submit</button>
-            </div>
+      <div id="quiz-explained">
+        <h1>Coding Quiz</h1>
+        <p>
+          Try to answer the following code-related questions within the time
+          limit. Keep in mind that the incorrect answers will penalize your
+          score/time.
+        </p>
+      </div>
 
-            <div id="b">
-              <ul id="initial-list"></ul>
-            </div>
+      <div id="question-container" class="hide">
+        <div id="question">Question</div>
+        <div id="answer-buttons" class="btn-grid">
+          <button class="btn">Answer 1</button>
+          <button class="btn">Answer 2</button>
+          <button class="btn">Answer 3</button>
+          <button class="btn">Answer 4</button>
+        </div>
+      </div>
+      <div class="hide" id="gameover-box">
+        <h1>GameOver</h1>
+        <div id="a">
+          <label>Enter Initials: </label><input type="text" id="initial" />
+          <button id="initial-submit">Submit</button>
+        </div>
 
+        <div id="b">
+          <ul id="initial-list"></ul>
         </div>
-        <div class="controls">
-            <button id="start-btn" class="start-btn btn">Begin Quiz</button>
-            <button id="next-btn" class="next-btn btn hide">Next Question</button>
-        </div>
+      </div>
+      <div class="controls">
+        <button id="start-btn" class="start-btn btn">Begin Quiz</button>
+        <button id="next-btn" class="next-btn btn hide">Next Question</button>
+      </div>
     </div>
     <script src="./assets/script.js"></script>
   </body>

@@ -87,3 +87,12 @@ body.wrong {
     display: none;
 }
 
+#quiz-explained {
+    text-align: center;
+}
+
+#time {
+    position: relative;
+    bottom: 20rem;
+    left: 55rem;
+}

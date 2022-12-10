@@ -2,10 +2,10 @@
 var startBtn = document.getElementById('start-btn');
 var nextBtn = document.getElementById('next-btn');
 var questionContainerElement = document.getElementById('question-container');
+var quizExplanation = document.getElementById('quiz-explained')
 var score = 0;
 var secondsLeft = 90;
 var timerInterval;
-var highscores = document.getElementById('highscore');
 var questions = [
   {
     question:"All are example of how users can interact with a webpage EXCEPT?",
@@ -68,7 +68,7 @@ nextBtn.addEventListener('click', () => {
 // create start game function
 function startGame() {
   score = 0;
-  secondsLeft = 90;
+  // secondsLeft = 90;
   startBtn.classList.add('hide');
   setTime();
   shuffledQuestions = questions.sort(() => Math.random() - .5) 
@@ -83,7 +83,6 @@ function setNextQuestion() {
   resetState ()
   if (currentQuestionIndex >= questions.length) {
     gameOver()
-    console.log("hello")
   }
   else{
    showQuestion(shuffledQuestions[currentQuestionIndex]) 
@@ -103,6 +102,7 @@ function showQuestion(question){
     }
     button.addEventListener('click', selectAnswer)
     answerBtnsElement.appendChild(button)
+    quizExplanation.classList.add('hide')
   });
 }
 function resetState() {
@@ -140,7 +140,7 @@ function setStatusClass(element, correct) {
   } else {
     element.classList.add('wrong');
     console.log("inside wrong");
-  secondsLeft = secondsLeft - 5; 
+  secondsLeft -= 2; 
   }
 }
 
@@ -164,7 +164,7 @@ function setTime() {
     secondsLeft--;
     document.getElementById("time").textContent = secondsLeft;
 
-    if(secondsLeft === 0) {
+    if(secondsLeft < 0) {
       clearInterval(timerInterval);
       gameOver();
     }
@@ -192,16 +192,11 @@ document.getElementById("initial-submit").addEventListener("click", function(e){
 
   for(var i=0; i<temp.length;i++)
   {
-    console.log("inside FOR loop");
     var li = document.createElement("li");
     li.textContent = temp[i].initial +": "+temp[i].score;
-    console.log(li);
     document.getElementById("initial-list").appendChild(li);
   }
 
 })
+ 
 
-// Scoreboard 
-function viewHighscores (){
-
-}
