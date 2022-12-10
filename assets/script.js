@@ -1,4 +1,4 @@
-// Variables under here
+// //////////////////////VARIABLES///////////////////////////////
 var startBtn = document.getElementById('start-btn');
 var nextBtn = document.getElementById('next-btn');
 var questionContainerElement = document.getElementById('question-container');
@@ -65,10 +65,9 @@ nextBtn.addEventListener('click', () => {
   setNextQuestion()
 })
 
-// create start game function
+//START GAME FUNCTION
 function startGame() {
   score = 0;
-  // secondsLeft = 90;
   startBtn.classList.add('hide');
   setTime();
   shuffledQuestions = questions.sort(() => Math.random() - .5) 
@@ -77,7 +76,7 @@ function startGame() {
   setNextQuestion()
 }
 
-// create function for next question
+// NEXT QUESTION FUNCTION
 function setNextQuestion() {
   answerBtnsElement.innerHTML=" "
   resetState ()
@@ -87,10 +86,9 @@ function setNextQuestion() {
   else{
    showQuestion(shuffledQuestions[currentQuestionIndex]) 
   }
-  
- 
 }
 
+// shows questions and their answers for user to choose from
 function showQuestion(question){
   questionElement.innerText = question.question
   question.answers.forEach(answer => {
@@ -131,7 +129,7 @@ function selectAnswer(e) {
   }
   nextBtn.classList.remove('hide')
 }
-
+// wrong or right screen and removes time from timer if user gets wrong answer
 function setStatusClass(element, correct) {
   clearStatusClass(element)
   if(correct) {
@@ -157,7 +155,7 @@ function gameOver(){
   gameOverContainer.classList.remove('hide')
 }
 
-// Add Timer
+// Timer Function
 function setTime() {
 
   timerInterval = setInterval(function() {
