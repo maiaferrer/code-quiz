@@ -1,4 +1,5 @@
 # code-quiz
+![Screen Shot 2022-12-09 at 7 48 11 PM](https://user-images.githubusercontent.com/114897110/206821990-91d2652d-c0ab-4b2d-94d3-6de80c352eb4.png)
 
 ## Project Description
 
